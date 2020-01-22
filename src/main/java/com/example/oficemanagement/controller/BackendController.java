@@ -23,6 +23,8 @@ public class BackendController {
         try {
             Information insert = service.insert(information);
             return ResponseEntity.status(HttpStatus.OK).body(insert);
+        } catch (ResourceNotFoundException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
